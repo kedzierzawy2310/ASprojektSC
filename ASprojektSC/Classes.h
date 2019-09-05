@@ -1,6 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
+/*
 #include <queue>
 #include <iostream>
 #include <vector>
@@ -45,8 +46,8 @@ public:
 
 class Bufet {
 public:
-	static int liczbaOsob;
-	static int wielkoscBufetu;
+	static int customer_number_;
+	static int buffet_size_;
 
 	Bufet();
 };
@@ -62,8 +63,8 @@ public:
 
 class Kasa {
 public:
-	int liczba_obsluzen;
-	int id_kasjera;
+	int service_number_;
+	int cashier_id_;
 	grupaKlientow* aktualnaGrupa;
 	Kasa* next;
 
@@ -191,4 +192,4 @@ public:
 	};
 };
 
-
+*/

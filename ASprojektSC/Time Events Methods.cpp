@@ -1,4 +1,7 @@
 #include "stdafx.h"
+/*
+
+#include "stdafx.h"
 #pragma once
 #include "Time Events.h"
 
@@ -43,8 +46,8 @@ std::queue<Stoliki*> Sala::lista_stolikow3;
 std::queue<Stoliki*> Sala::lista_stolikow4;
 double ZdarzeniaCzasowe::czas_systemowy;
 double ZdarzeniaCzasowe::koniec_symulacji;
-int Bufet::liczbaOsob;
-int Bufet::wielkoscBufetu;
+int Bufet::customer_number_;
+int Bufet::buffet_size_;
 Kierownik* Sala::kierownikSali;
 std::queue<Stoliki*> Sala::pom_stolik_napoje;
 std::queue<Stoliki*> Sala::pom_stolik_jedzenie;
@@ -113,7 +116,7 @@ void ZdarzeniaCzasowe::execute()
 	//--------------------------------------------------------------------------------- POJAWIENIE SIÊ NOWEJ GRUPY KLIENTÓW W SYSTEMIE ------------------------------------------------------------------------------------------------
 
 	case 1:
-		grupa = new grupaKlientow;
+		grupa = Klientow;
 		Statystyki::liczba_wszystkich_klientow++;
 		Statystyki::liczba_obecnych_klientow++;
 		faza1 << Statystyki::liczba_obecnych_klientow << std::endl;
@@ -301,8 +304,8 @@ void ZdarzeniaCzasowe::execute()
 		{
 			if (Restauracja::kasjer->aktualnaGrupa != nullptr && Restauracja::kasjer->aktualnaGrupa->czas_placenia == ZdarzeniaCzasowe::czas_systemowy) {
 				grupa = Restauracja::kasjer->aktualnaGrupa;
-				std::cout << ZdarzeniaCzasowe::czas_systemowy << " Grupa " << grupa->id_grupy << " zaplacila za posilek (kasjer "<< Restauracja::kasjer->id_kasjera << ")" << std::endl;
-				Restauracja::kasjer->liczba_obsluzen++;
+				std::cout << ZdarzeniaCzasowe::czas_systemowy << " Grupa " << grupa->id_grupy << " zaplacila za posilek (kasjer "<< Restauracja::kasjer->cashier_id_ << ")" << std::endl;
+				Restauracja::kasjer->service_number_++;
 				Restauracja::kasjer->aktualnaGrupa = nullptr;
 				delete grupa;
 				Statystyki::liczba_obecnych_klientow--;
@@ -359,8 +362,8 @@ void ZdarzeniaCzasowe::execute()
 						Restauracja::pom_kol_kasa = grupa;
 					}
 					std::cout << ZdarzeniaCzasowe::czas_systemowy << " Grupa " << wlasciwa->id_grupy << " opuscila bufet" << std::endl;
-					Restauracja::bufet->liczbaOsob = Restauracja::bufet->liczbaOsob - wlasciwa->wielkosc_grupy;
-					std::cout << ZdarzeniaCzasowe::czas_systemowy << " Obecny stan bufetu: " << Restauracja::bufet->liczbaOsob << " z " << Restauracja::bufet->wielkoscBufetu << std::endl;
+					Restauracja::bufet->customer_number_ = Restauracja::bufet->customer_number_ - wlasciwa->wielkosc_grupy;
+					std::cout << ZdarzeniaCzasowe::czas_systemowy << " Obecny stan bufetu: " << Restauracja::bufet->customer_number_ << " z " << Restauracja::bufet->buffet_size_ << std::endl;
 					Restauracja::kolejka_kasy.kolejka.push(wlasciwa);
 					std::cout << ZdarzeniaCzasowe::czas_systemowy << " Grupa " << wlasciwa->id_grupy << " oczekuje w kolejce do kasy" << std::endl;
 					Statystyki::liczba_kolejka_do_kasy++;
@@ -790,7 +793,7 @@ void ZdarzeniaCzasowe::execute()
 					{
 						Restauracja::bufet_lista.kolejka.pop();
 					}
-					Restauracja::bufet->liczbaOsob = Restauracja::bufet->liczbaOsob - grupa->wielkosc_grupy;
+					Restauracja::bufet->customer_number_ = Restauracja::bufet->customer_number_ - grupa->wielkosc_grupy;
 					delete grupa;
 				}
 				grupa = pom3;
@@ -814,3 +817,4 @@ Komunikat::Komunikat(ZdarzeniaCzasowe* zdarzenie)
 	this->zdarzenie = zdarzenie;
 	czas_wykonania = losuj(this->zdarzenie->zdarzenie) + ZdarzeniaCzasowe::czas_systemowy;
 }
+*/

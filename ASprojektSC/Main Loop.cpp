@@ -1,4 +1,5 @@
 #include "stdafx.h"
+/*
 #pragma once
 #include "Classes.h"
 #include "Time Events.h"
@@ -78,7 +79,7 @@ int main()
 			if (!Restauracja::kolejka_bufet.kolejka.empty())
 			{
 				klienci = Restauracja::kolejka_bufet.kolejka.front();
-				if (Restauracja::bufet->wielkoscBufetu-Restauracja::bufet->liczbaOsob>=klienci->wielkosc_grupy)
+				if (Restauracja::bufet->buffet_size_-Restauracja::bufet->customer_number_>=klienci->wielkosc_grupy)
 				{
 					if (Restauracja::bufet_lista.kolejka.empty())
 					{
@@ -99,13 +100,13 @@ int main()
 					ZdarzeniaCzasowe::dodaj(powrotZBufetu->komunikat);
 					klienci->czas_opuszczenia_bufetu = powrotZBufetu->komunikat->czas_wykonania;
 					Restauracja::bufet_lista.kolejka.push(klienci);
-					Restauracja::bufet->liczbaOsob = Restauracja::bufet->liczbaOsob + klienci->wielkosc_grupy;
+					Restauracja::bufet->customer_number_ = Restauracja::bufet->customer_number_ + klienci->wielkosc_grupy;
 					Restauracja::kolejka_bufet.kolejka.pop();
 					Statystyki::liczba_kolejka_do_bufetu--;
 					std::cout << ZdarzeniaCzasowe::czas_systemowy << " Grupa " << klienci->id_grupy << " weszla do bufetu" << std::endl;
-					std::cout << ZdarzeniaCzasowe::czas_systemowy << " Obecny stan bufetu: " << Restauracja::bufet->liczbaOsob << " z " << Restauracja::bufet->wielkoscBufetu << std::endl;
+					std::cout << ZdarzeniaCzasowe::czas_systemowy << " Obecny stan bufetu: " << Restauracja::bufet->customer_number_ << " z " << Restauracja::bufet->buffet_size_ << std::endl;
 				}
-				else std::cout << ZdarzeniaCzasowe::czas_systemowy <<" Grupa "<<klienci->id_grupy<<" oczekuje na wolne miejsce w bufecie (stan bufetu: "<< Restauracja::bufet->liczbaOsob << "/" << Restauracja::bufet->wielkoscBufetu << ", wielkosc grupy: " << klienci->wielkosc_grupy << ")" << std::endl;
+				else std::cout << ZdarzeniaCzasowe::czas_systemowy <<" Grupa "<<klienci->id_grupy<<" oczekuje na wolne miejsce w bufecie (stan bufetu: "<< Restauracja::bufet->customer_number_ << "/" << Restauracja::bufet->buffet_size_ << ", wielkosc grupy: " << klienci->wielkosc_grupy << ")" << std::endl;
 			}
 
 		//----------------------------------------------------- PRZYDZIELANIE STOLIKÓW PRZEZ KIEROWNIKA SALI (METODA: £¥CZENIE STOLIKÓW) ----------------------------------------------------------------------------------------
@@ -792,7 +793,7 @@ int main()
 					{
 						Restauracja::kasjer->aktualnaGrupa = klienci;
 						Restauracja::kolejka_kasy.kolejka.pop();
-						std::cout << ZdarzeniaCzasowe::czas_systemowy << " Grupa " << klienci->id_grupy << " dokonuje platnosci u kasjera " << Restauracja::kasjer->id_kasjera << std::endl;
+						std::cout << ZdarzeniaCzasowe::czas_systemowy << " Grupa " << klienci->id_grupy << " dokonuje platnosci u kasjera " << Restauracja::kasjer->cashier_id_ << std::endl;
 						Statystyki::liczba_kolejka_do_kasy--;
 						dokonaniePlatnosci = new ZdarzeniaCzasowe(6);
 						ZdarzeniaCzasowe::dodaj(dokonaniePlatnosci->komunikat);
@@ -958,7 +959,7 @@ int main()
 	std::cout << std::endl;
 	while (Restauracja::kasjer != nullptr)
 	{
-		std::cout << "Kasjer " << Restauracja::kasjer->id_kasjera << " obsluzyl: " << Restauracja::kasjer->liczba_obsluzen << " grup." << std::endl;
+		std::cout << "Kasjer " << Restauracja::kasjer->cashier_id_ << " obsluzyl: " << Restauracja::kasjer->service_number_ << " grup." << std::endl;
 		Restauracja::kasjer = Restauracja::kasjer->next;
 	}
 	std::cout << std::endl;
@@ -1042,3 +1043,4 @@ int main()
 
 	return 0;
 }
+*/

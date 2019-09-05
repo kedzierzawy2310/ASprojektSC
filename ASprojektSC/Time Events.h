@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+/*
 #pragma once
 #include "Classes.h"
 
@@ -46,3 +47,4 @@ static std::ofstream kolejka_sala("D³ugoœæ_kolejki_do_sali.txt");
 static std::ofstream kolejka_kasa("D³ugoœæ_kolejki_do_kasy.txt");
 static std::ofstream czas_oczekiwania_stolik("Czas_oczekiwania_na_stolik.txt");
 static std::ofstream czas_oczekiwania_na_obsluge("Czas_oczekiwania_na_obs³ugê.txt");
+*/
